@@ -1,0 +1,2 @@
+module CjHelper
+end

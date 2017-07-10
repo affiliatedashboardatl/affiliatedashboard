@@ -1,0 +1,41 @@
+<section class="content-header">
+	<h1>
+		CJ Affiliate
+		<small>Last 30 Days</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><%= link_to "Home", '/' %> <i class="fa fa-dashboard"></i></li>
+		<li class="active">CJ Affiliate</li>
+		<li class="active">Performance</li>
+	</ol>
+</section>
+<section class="content">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Status</th>
+				<th>Advertiser Name</th>
+				<th>Action Name</th>
+				<th>Commission</th>
+				<th>Action Type</th>
+				<th>Lock Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @commissions.each do |commission| %>
+				<tr>
+					<td><%= commission.event_date %></td>
+					<td><%= commission.action_status %></td>
+					<td><%= commission.advertiser_name %></td>
+					<td><%= commission.action_tracker_name %></td>
+					<td>$<%= commission.commission_amount %></td>
+					<td><%= commission.action_type %></td>
+					<td><%= commission.locking_date %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</section>
+
+
