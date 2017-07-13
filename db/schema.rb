@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170709210910) do
+ActiveRecord::Schema.define(version: 20170713025228) do
 
   create_table "developer_credentials", force: :cascade do |t|
     t.string "integration_id"
     t.string "title"
-    t.string "value"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_value"
+    t.string "encrypted_value_iv"
     t.index ["user_id"], name: "index_developer_credentials_on_user_id"
   end
 
