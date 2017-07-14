@@ -38,6 +38,8 @@ gem 'sprockets'
 gem 'jquery-rails'
 gem 'devise'
 gem 'attr_encrypted', "~> 3.0.0"
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
 
 # affiliate program client api gems
 gem 'commission_junction'
