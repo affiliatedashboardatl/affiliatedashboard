@@ -3,13 +3,25 @@
 <%= Constants::Site::Name %>
 </a>
   <nav class="navbar navbar-static-top" role="navigation">
-  <div class="navbar-custom-menu">
-    <% if user_signed_in? %>
-      <%= render "layouts/navigation/navbar_custom_menu" %>
-    <% else %>
-      <%= link_to('Login', new_user_session_path) %>
-      <%= link_to('Try it!', new_user_registration_path) %>
-    <% end %>
-    </div>
+      <% if user_signed_in? %>
+        <%= render "layouts/navigation/navbar_custom_menu" %>
+      <% else %>
+        <div class="navbar-custom-menu">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-right" style="height: 50px">
+              <li>
+                <%= link_to new_user_registration_path, :class => "btn btn-flat" do %>
+                  <i class="fa fa-user-plus" aria-hidden="true"> Try it!</i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_session_path, :class => "btn btn-flat" do %>
+                  <i class="fa fa-sign-in" aria-hidden="true"> Login</i>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
   </nav>
 </header>

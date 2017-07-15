@@ -9,12 +9,17 @@
 	</head>
 	<body class="fixed skin-green">
 		<div class="wrapper">
-			<%= render 'layouts/navigation/layout'%>
-			<div class="content-wrapper">
-				<%= render partial: "shared/flash_messages", flash: flash %> 
-		    	<%= yield %>
-			</div>
-			<%= render 'layouts/navigation/footer' %>
+			<% if user_signed_in? %>
+				<%= render 'layouts/navigation/layout'%>
+				<div class="content-wrapper">
+					<%= render partial: "shared/flash_messages", flash: flash %> 
+			    	<%= yield %>
+				</div>
+				<%= render 'layouts/navigation/footer' %>
+			<% else %>
+				<%= render 'layouts/navigation/header' %>
+				<%= yield %>
+			<% end %>
 		</div>
 	</body>
 </html>

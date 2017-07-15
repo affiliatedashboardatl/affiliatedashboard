@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-	devise_for :users, :controllers => { registrations: 'registrations' }
-	get 'cj/performance'
-	get 'dashboard/home'
-	get 'welcome', to: 'landing#show'
+	devise_for :users, :controllers => { registrations: 'registrations' }, 
+		path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup'}
 
-	root to: 'dashboard#home'
+	get 'cj/performance'
+	get 'dashboard', to: 'dashboard#home'
+	
+	root to: 'landing#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
