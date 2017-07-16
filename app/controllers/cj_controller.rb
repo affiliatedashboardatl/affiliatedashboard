@@ -10,9 +10,9 @@ class CjController < ApplicationController
 
 		cj = CommissionJunction.new(dev_key, website_id)
 		@commissions = cj.commissions('start-date' => '2017-06-01', 'end-date' => '2017-06-30')
-		sum = 0
-		@commissions.map { |c| sum += c.commission_amount.to_f }
-		flash.notice = sum
+		#sum = 0
+		#@commissions.map { |c| sum += c.commission_amount.to_f }
+		#flash.notice = sum
   	end
 
 end

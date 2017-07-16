@@ -17,8 +17,10 @@
 				</div>
 				<%= render 'layouts/navigation/footer' %>
 			<% else %>
-				<%= render 'layouts/navigation/header' %>
-				<%= yield %>
+				<section class="content content-wrapper">
+					<%= render 'layouts/navigation/header' %>
+					<%= yield %>
+				</section>
 			<% end %>
 		</div>
 	</body>
