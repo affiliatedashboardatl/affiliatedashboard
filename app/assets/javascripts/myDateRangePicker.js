@@ -12,6 +12,7 @@ function myDateRangePicker(elem) {
     $(elem).daterangepicker({
         startDate: start,
         endDate: end,
+        opens: 'left',
         ranges: {
            'Today': [moment(), moment()],
            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
