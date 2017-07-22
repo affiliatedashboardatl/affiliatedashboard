@@ -1,39 +1,90 @@
-<div class="box">
-	<div class="box-body">       
-		<table id="cj_datatable" class="table table-bordered table-striped nowrap">
-            <thead>
-                <tr role="row">
-	                <th>Date</th>
-	                <th>Status</th>
-	                <th>Advertiser Name</th>
-	                <th>Action Name</th>
-	                <th>Commission</th>
-	                <th>Action Type</th>
-	                <th>Locking Date</th>
-                </tr>
-            </thead>
-            <tbody>
-            	<% @commissions.each_with_index do |commission, index| %>
-					<tr role="row" class=
-						<%= (index + 1) % 2 == 0 ? "\"even\"" : "\"odd\"" %> >
-						<td><%= Time.parse(commission.event_date).strftime('%d %b %Y') %></td>
-						<td><%= commission.action_status %></td>
-						<td><%= commission.advertiser_name %></td>
-						<td><%= commission.action_tracker_name %></td>
-						<td>$<%= commission.commission_amount %></td>
-						<td><%= commission.action_type %></td>
-						<td><%= commission.locking_date %></td>
-					</tr>
-				<% end %>
-            </tbody>
-     	</table>
- 	</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-success">
+			<div class="box-header with-border">   
+				<h3 class="box-title">Performance</h3>       
+				<div class="box-tools pull-right">
+					<button type="button" class="btn btn-box-tool" data-widget="collapse">
+						<i class="fa fa-minus"></i>
+					</button>
+				</div>
+			</div>
+			<div class="box-body">
+				<div id="chart">
+					<canvas id="cj_chart"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-success">
+			<div class="box-header with-border">  
+				<h3 class="box-title">Transactions</h3>           
+				<div class="box-tools pull-right">
+					<button type="button" class="btn btn-box-tool" data-widget="collapse">
+						<i class="fa fa-minus"></i>
+					</button>
+				</div>
+            </div>
+			<div class="box-body">       
+				<table id="cj_datatable" class="table table-bordered table-striped nowrap">
+		            <thead>
+		                <tr role="row">
+			                <th>Date</th>
+			                <th>Status</th>
+			                <th>Advertiser Name</th>
+			                <th>Action Name</th>
+			                <th>Commission</th>
+			                <th>Action Type</th>
+			                <th>Locking Date</th>
+		                </tr>
+		            </thead>
+		            <tbody>
+		            	<% @commissions.each_with_index do |commission, index| %>
+							<tr role="row" class=
+								<%= (index + 1) % 2 == 0 ? "\"even\"" : "\"odd\"" %> >
+								<td><%= Time.parse(commission.event_date).strftime('%d %b %Y') %></td>
+								<td><%= commission.action_status %></td>
+								<td><%= commission.advertiser_name %></td>
+								<td><%= commission.action_tracker_name %></td>
+								<td>$<%= commission.commission_amount %></td>
+								<td><%= commission.action_type %></td>
+								<td><%= commission.locking_date %></td>
+							</tr>
+						<% end %>
+		            </tbody>
+		     	</table>
+		 	</div>
+		 </div>
+	 </div>
  </div>
-
 
 <script>
 	$(function(){
 	    var table = $('#cj_datatable').DataTable({ responsive: true });
+	    var commissions = <%= raw @commissions.to_json %>;
     	new $.fn.dataTable.FixedHeader( table ); 
+    	buildChart();
 	});
+
+	function buildChart() {
+		// This will get the first returned node in the jQuery collection.
+		var chartData = {
+			labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+			datasets: [
+				{
+					label: 'Commissions',
+					backgroundColor: 'rgba(60,141,188,0.9)',
+					data: [28, 48, 40, 19, 86, 27, 90]
+				}
+			]
+		};
+
+		var cj_chart = new Chart($("#cj_chart"), {
+		    type: "line",
+		    data: chartData, 
+		});
+	}
 </script>

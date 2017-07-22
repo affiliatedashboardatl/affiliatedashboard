@@ -1,0 +1,36 @@
+<section class="content-header">
+	<h1>
+		CJ Affiliate
+		<small>
+			<span id="reportrange" style="cursor: pointer;"">
+			</span>
+		</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><%= link_to "Home", '/' %> <i class="fa fa-dashboard"></i></li>
+		<li class="active">CJ Affiliate</li>
+		<li class="active">Performance</li>
+	</ol>
+</section>
+<section class="content">
+	<div id="performance">
+	</div>
+</section>
+
+
+<script>
+	$(function(){
+	    myDateRangePicker($('#reportrange'), "/cj/performance", "#performance");
+	});
+</script>
+
+
+<%= stylesheet_link_tag "https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" %>
+<%= stylesheet_link_tag "https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.bootstrap.min.css" %>
+<%= stylesheet_link_tag "https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" %>
+<%= javascript_include_tag "https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js" %>
+<%= javascript_include_tag "https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js" %>
+<%= javascript_include_tag "https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js" %>
+<%= javascript_include_tag "https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js" %>
+<%= javascript_include_tag "https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js" %>
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js" %>
